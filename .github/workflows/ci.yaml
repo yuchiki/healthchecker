@@ -7,10 +7,17 @@ on:
     branches:
       - main
 jobs:
-  sample:
+  synth:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-ci-environment
       - name: synth
         run: npx cdk synth
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-ci-environment
+      - name: test
+        run: npx test
