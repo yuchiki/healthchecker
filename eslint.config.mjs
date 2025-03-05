@@ -5,6 +5,8 @@ import ts from 'typescript-eslint'
 import stylistic from '@stylistic/eslint-plugin'
 import { FlatCompat } from '@eslint/eslintrc'
 import importPlugin from 'eslint-plugin-import';
+import eslintCdkPlugin from "eslint-cdk-plugin";
+
 
 
 const compat = new FlatCompat()
@@ -16,7 +18,11 @@ export default ts.config(
   importPlugin.flatConfigs.recommended,
   stylistic.configs['recommended'],
   {
+    plugins: {
+      cdk: eslintCdkPlugin
+    },
     rules: {
+      ...eslintCdkPlugin.configs.strict.rules,
       'import/order': [
         'error',
         {
