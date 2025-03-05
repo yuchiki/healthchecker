@@ -1,7 +1,15 @@
-import * as cdk from 'aws-cdk-lib';
+import {Stack, StackProps} from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { Bucket } from 'aws-cdk-lib/aws-s3';
 
+export class HealthcheckerStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+    const bucket = new Bucket(this, 'Bucket')
+  }
+}
+
+/*
 export class HealthcheckerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -14,3 +22,4 @@ export class HealthcheckerStack extends cdk.Stack {
     // });
   }
 }
+*/
