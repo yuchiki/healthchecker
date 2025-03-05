@@ -7,6 +7,13 @@
 	"features": {
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"eslint.useFlatConfig": true
+			}
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
