@@ -8,6 +8,7 @@ on:
       - main
 jobs:
   synth:
+    name: synth
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,6 +16,7 @@ jobs:
       - name: synth
         run: npx cdk synth
   test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +24,7 @@ jobs:
       - name: test
         run: npm run test
   lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
