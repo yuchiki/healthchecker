@@ -1,0 +1,13 @@
+name: "Setup CI environment"
+description: "Setup CI environment for the project"
+runs:
+  using: "composite"
+  steps:
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '22.12.0' # package.json の node version と合わせる
+    shell: bash
+  - name: Install dependencies
+    run: npm ci
+    shell: bash
