@@ -1,32 +1,33 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-
-import js from '@eslint/js'
-import ts from 'typescript-eslint'
-import stylistic from '@stylistic/eslint-plugin'
+/* eslint-disable import/no-unresolved */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { FlatCompat } from '@eslint/eslintrc'
-import importPlugin from 'eslint-plugin-import';
-import eslintCdkPlugin from "eslint-cdk-plugin";
-
-
+import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
+import eslintCdkPlugin from 'eslint-cdk-plugin'
+import importPlugin from 'eslint-plugin-import'
+import ts from 'typescript-eslint'
 
 const compat = new FlatCompat()
 
 export default ts.config(
   js.configs.recommended,
-  ...compat.extends("plugin:import/typescript"),
+  ...compat.extends('plugin:import/typescript'),
   ...ts.configs.strictTypeChecked,
   importPlugin.flatConfigs.recommended,
   stylistic.configs['recommended'],
   {
     plugins: {
-      cdk: eslintCdkPlugin
+      cdk: eslintCdkPlugin,
     },
     rules: {
+      // eslint-disable-next-line import/no-named-as-default-member
       ...eslintCdkPlugin.configs.strict.rules,
       'import/order': [
         'error',
         {
-          groups: [
+          'groups': [
             'builtin',
             'external',
             'internal',
@@ -36,9 +37,9 @@ export default ts.config(
             'index',
           ],
           'newlines-between': 'always',
-          pathGroupsExcludedImportTypes: ['builtin'],
-          alphabetize: { order: 'asc', caseInsensitive: true },
-          pathGroups: [
+          'pathGroupsExcludedImportTypes': ['builtin'],
+          'alphabetize': { order: 'asc', caseInsensitive: true },
+          'pathGroups': [
             {
               pattern: 'react',
               group: 'external',
@@ -50,10 +51,12 @@ export default ts.config(
     },
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['*.js', '*.mjs'],
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    ignores: ['node_modules/', 'dist/', 'eslint.config.js'],
+    ignores: ['node_modules/', 'cdk.out/'],
   },
 )

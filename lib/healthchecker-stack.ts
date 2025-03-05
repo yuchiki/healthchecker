@@ -1,25 +1,9 @@
 import { Stack, StackProps } from 'aws-cdk-lib'
-import { Bucket } from 'aws-cdk-lib/aws-s3'
 import { Construct } from 'constructs'
 
 export class HealthcheckerStack extends Stack {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
-    const bucket = new Bucket(this, 'Bucket')
   }
 }
-
-/*
-export class HealthcheckerStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
-
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'HealthcheckerQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
-  }
-}
-*/
