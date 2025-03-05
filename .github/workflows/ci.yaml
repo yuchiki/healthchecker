@@ -21,3 +21,10 @@ jobs:
       - uses: ./.github/actions/setup-ci-environment
       - name: test
         run: npx test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-ci-environment
+      - name: lint
+        run: npm run lint
